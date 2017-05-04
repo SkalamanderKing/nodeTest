@@ -1,10 +1,8 @@
 let socket = io.connect();
+var globen = undefined;
 
-socket.on('message', (message)=>{
-	console.log(message);
-});
 
-socket.emit('clientmessage', 'hi there!');
+//socket.emit('clientmessage', 'hi there!');
 //function myFunction() {
   //   alert("Hello!");
 //}
@@ -14,11 +12,20 @@ socket.emit('clientmessage', 'hi there!');
 //$( "btn" ).click(function() {
   //alert( "Hej" );
 //});
-var globen = undefined;
+
 $(document).ready(function(){
     $("button").click(function(){
     	globen=$("#txt").val();
        //alert("Value: " + globen );
-       $("textarea").val($('textarea').val() + "\n" + globen );
+       
+       socket.emit('chat', {value: globen});
     });
+});
+
+//socket.on('message', (message)=>{
+//	console.log(message);
+//});
+socket.on('message', (data)=>{
+ console.log(data);
+ $("textarea").val($('textarea').val() + "\n" + data );
 });

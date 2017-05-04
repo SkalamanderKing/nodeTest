@@ -17,13 +17,21 @@ app.get('/', (req, res) => {
 });
 
 io.on('connection', function (socket){
-	socket.emit('message', "hello fuckers");
-	//socket.on('chat', (data) => {
-	//	io.emit('message', data);
-	//});
-	socket.on('clientmessage', (message) =>{
-		console.log(message);
+	
+	socket.on('chat', (data) => {
+	//socket.emit('message', "hello "+data.value);
+	if(data.value==='hej')
+	//io.emit('message', data);
+		//io.emit('message', 'hej på dej!');
+		 socket.emit('message', 'Hej?');
+		else 
+		//io.emit('message', 'va?');
+	 socket.emit('message', 'va?');
 	});
+
+	//socket.on('clientmessage', (message) =>{
+	//	console.log(message);
+	//});
 });
 
 //app.get('/', (req, res) => {
