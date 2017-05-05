@@ -1,8 +1,11 @@
 extends layout
-
 block content
-	//-button(onclick="myFunction()") Hej
-	button(class="btn") Hej
-	input(type='text' id='txt')
-	div(class="t") Tjoho
-	textarea(rows="4" cols="50")
+  .row
+    col-md-8
+      h1 Hej! Jag är en bot!
+         
+         textarea(readonly)
+         p 
+         input(type='text' id='txt')
+         span &nbsp;
+         button(class="btn" type="button" class="btn btn-warning") Skicka
